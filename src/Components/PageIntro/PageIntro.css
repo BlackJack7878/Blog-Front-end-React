@@ -1,0 +1,11 @@
+.intro-wrapper {
+  background-color: #f9f7f7;
+  padding: 90px 20px;
+  text-align: center; }
+  .intro-wrapper h1 {
+    max-width: 760px;
+    display: inline-block;
+    margin: auto;
+    text-align: center;
+    padding: 0px 20px;
+    color: #ef3f42; }

@@ -1,0 +1,19 @@
+@import '../../../../Assets/Styles/variables.scss';
+@import '../../../../Assets/Styles/mixins.scss';
+
+.comment {
+	padding: 20px 50px 40px 50px;
+	margin-bottom: 30px;
+	background-color: $secondary_color;
+
+	h4 {}
+
+	p {
+		border-left: 2px solid $primary_color;
+		padding: 10px 0;
+		padding-left: 30px;
+		margin-bottom: 40px;
+		margin-top: 30px;
+	}
+
+}

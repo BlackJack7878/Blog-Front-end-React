@@ -1,0 +1,17 @@
+@import '../../Assets/Styles/variables.scss';
+
+.intro-wrapper {
+	background-color: $secondary_color;
+	padding: 90px 20px;
+	text-align: center;
+
+	h1 {
+		max-width: 760px;
+		display: inline-block;
+		margin: auto;
+		text-align: center;
+		padding: 0px 20px;
+		color: $primary-color;
+	}
+	
+}

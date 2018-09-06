@@ -1,0 +1,10 @@
+.comment {
+  padding: 20px 50px 40px 50px;
+  margin-bottom: 30px;
+  background-color: #f9f7f7; }
+  .comment p {
+    border-left: 2px solid #ef3f42;
+    padding: 10px 0;
+    padding-left: 30px;
+    margin-bottom: 40px;
+    margin-top: 30px; }

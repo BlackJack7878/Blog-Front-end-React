@@ -1,0 +1,39 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  height: 100%;
+  padding: 0 0;
+  margin: 0; }
+
+.wrapper {
+  max-width: 940px;
+  width: 100%;
+  margin: auto;
+  padding: 80px 0px; }
+
+.animated-link {
+  text-decoration: none;
+  color: #ef3f42;
+  position: relative;
+  display: inline-block;
+  transition: all 0.3s ease;
+  padding: 5px 10px; }
+  .animated-link span {
+    position: relative;
+    z-index: 2; }
+  .animated-link:before {
+    position: absolute;
+    width: 0;
+    height: auto;
+    background-color: #ef3f42;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 100%;
+    transition: all 0.3s ease;
+    z-index: 1;
+    content: ''; }
+  .animated-link:hover, .animated-link:active, .animated-link:focus {
+    color: white; }
+    .animated-link:hover:before, .animated-link:active:before, .animated-link:focus:before {
+      right: 0;
+      width: 100%; }
