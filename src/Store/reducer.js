@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import allPosts from './Reducers/allPosts';
 import selectedPost from './Reducers/selectedPost';
+import selectedUser from './Reducers/selectedUser';
 
 export const initialState = {
 	allPosts: {
@@ -29,10 +30,42 @@ export const initialState = {
 				commentEmail: ''
 			}
 		]
+	},
+	selectedUser: {
+		isLoading: false,
+		userId: 0,
+		userName: '',
+		userNickname: '',
+		userEmail: '',
+		userPhone: '',
+		userWebsite: '',
+		userAddress: {
+			street: '',
+			suite: '',
+			city: '',
+			zipcode: '',
+			geo: {
+				lat: '',
+				lng: ''
+			}
+		},
+		userCompany: {
+			name: '',
+			catchPhrase: '',
+			bs: ''
+		},
+		userTodos: [
+			{
+				todoId: 0,
+				todoTitle: '',
+				todoStatus: false
+			}
+		]
 	}
 };
 
 export default combineReducers({
   allPosts,
-  selectedPost
+  selectedPost,
+  selectedUser
 });

@@ -6,7 +6,9 @@ const Post = (props) => {
 	return (
 		<div className='post'>
 			<h2>{props.title}</h2>
-			<h3>By user #{props.userId}</h3>
+			<h3>
+				<Link to={`/user/${props.userId}`}>By user #{props.userId}</Link>
+			</h3>
 			<p>{props.text}</p>
 			<Link to={`/post/${props.id}`} className='post-more animated-link'>
 				<span>Read more</span>
