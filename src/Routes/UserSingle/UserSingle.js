@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import PageIntro from '../../Components/PageIntro/PageIntro';
 import UserMap from './Components/UserMap/UserMap';
 import ToDoList from '../../Components/ToDoList/ToDoList';
+import Loader from '../../Components/Loader/Loader';
 
 import './UserSingle.css';
 
@@ -27,10 +28,14 @@ class UserSingle extends Component {
 
 	render() {
 		const firstName = this.props.selectedUser.userName.split(' ')[0];
+		const is_loading = (this.props.selectedUser.isLoading || this.props.selectedUser.isUserTodosLoading) ? true : false ;
 
 		return(
 			<div className='user-single'>
+				<Loader is_loading={is_loading} />
+
 				<PageIntro title={this.props.selectedUser.userName} />
+
 				<div className='wrapper'>
 					<div className='col'>
 						<h2>{this.props.selectedUser.userName}</h2>

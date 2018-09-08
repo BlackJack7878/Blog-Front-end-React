@@ -6,7 +6,8 @@ function post(state = {
 	postId: 0,
 	userId: 0,
 	postTitle: '',
-	postBody: ''
+	postBody: '',
+	isPostCommentsLoading: false
 }, action) {
 	switch (action.type) {
 		case REQUEST_POST_SINGLE: {
@@ -29,17 +30,17 @@ function post(state = {
 }
 
 function comments(state = {
-	isLoading: false,
+	isPostCommentsLoading: false,
 	postComments: []
 }, action) {
 	switch (action.type) {
 		case REQUEST_POST_COMMENTS: {
-			return { ...state, isLoading: true };
+			return { ...state, isPostCommentsLoading: true };
 		}
 		case RECEIVE_POST_COMMENTS: {
 			return {
 				...state,
-				isLoading: false,
+				isPostCommentsLoading: false,
 				postComments: action.payload.postComments
 			};
 		}

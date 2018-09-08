@@ -1,0 +1,20 @@
+@import '../../Assets/Styles/mixins.scss';
+
+.loader {
+	position: relative;
+
+	&.active:after {
+		@include pos(fixed, 100%, 100%);
+		background-image: url('../../Assets/Images/loader.svg');
+		background-repeat: no-repeat;
+		background-position: center;
+		background-color: white;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 100;
+		content: '';
+	}
+
+}

@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 
 import PageIntro from '../../Components/PageIntro/PageIntro';
 import ToDoList from '../../Components/ToDoList/ToDoList';
+import Loader from '../../Components/Loader/Loader';
 
 import { getUser, updateUserTodo } from '../../Store/Actions/actionTypes';
 
@@ -15,9 +16,14 @@ class UserTodos extends Component {
 	}
 
 	render() {
+		const is_loading = (this.props.selectedUser.isLoading || this.props.selectedUser.isUserTodosLoading) ? true : false ;
+
 		return(
 			<div>
+				<Loader is_loading={is_loading} />
+
 				<PageIntro title={this.props.selectedUser.userName} />
+
 				<div className='wrapper'>
 					<ToDoList 
 						list={this.props.selectedUser.userTodos}

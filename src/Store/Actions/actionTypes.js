@@ -173,11 +173,11 @@ export const getPostInfo = (postId = 0) => (dispatch, getState) => {
 // ----------------------------------------------
 // POSTS
 // ----------------------------------------------
-
 export const REQUEST_POSTS = 'REQUEST_POSTS';
-export function requestPosts() {
+export function requestPosts(page) {
 	return {
-		type: REQUEST_POSTS
+		type: REQUEST_POSTS,
+		payload: page
 	}
 }
 
@@ -201,9 +201,9 @@ export function receivePosts(json) {
 }
 
 // ASYNC POST REQUEST
-export const getPosts = () => dispatch => {
+export const getPosts = (page = 1, userId = null) => dispatch => {
 
-	dispatch(requestPosts());
+	dispatch(requestPosts(page));
 
 	return fetch('https://jsonplaceholder.typicode.com/posts/')
 		.then(response => response.json())

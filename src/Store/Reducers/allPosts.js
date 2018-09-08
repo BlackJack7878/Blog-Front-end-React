@@ -4,18 +4,29 @@ import { initialState } from '../reducer';
 function posts(state = {
 	loadedAt: null,
 	isLoading: false,
+	page: 1,
+	maxPage: 1,
 	posts: []
 }, action) {
 	switch (action.type) {
 		case REQUEST_POSTS: {
-			return { ...state, isLoading: true };
+			return { ...state, isLoading: true, page: action.payload };
 		}
 		case RECEIVE_POSTS: {
 			return { 
 				...state, 
-				isLoading: false, 
-				posts: action.payload.posts, 
-				loadedAt: action.payload.loadedAt 
+				isLoading: false,
+				maxPage: action.payload.posts.length / 5,
+				posts: action.payload.posts.map((item, index) => {
+					if (index >= state.page * 5 && index < (state.page * 5 + 5)) {
+						return item;
+					}
+					else {
+						return null;
+					}
+				}).filter(item => item != null),
+				loadedAt: action.payload.loadedAt,
+				page: action.payload
 			};
 		}
 		default: { return state; }

@@ -1,14 +1,14 @@
 body {
   font-family: 'Roboto', sans-serif;
   height: 100%;
-  padding: 0 0;
+  padding: 0 0 40px 0;
   margin: 0; }
 
 .wrapper {
   max-width: 940px;
   width: 100%;
   margin: auto;
-  padding: 80px 0px; }
+  padding: 80px 0px 40px 0px; }
 
 a {
   color: #ef3f42;
@@ -18,6 +18,32 @@ a {
 
 p {
   line-height: 1.6; }
+
+.button {
+  font-size: 14px;
+  line-height: 1.3;
+  text-decoration: none;
+  color: white;
+  background-color: #ef3f42;
+  padding: 5px 8px;
+  display: inline-block;
+  margin: 0 5px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  border: 2px solid #ef3f42; }
+  .button.inactive {
+    color: #ef3f42;
+    background-color: #f9f7f7;
+    border: 2px solid #ef3f42; }
+    .button.inactive:hover, .button.inactive:active, .button.inactive:focus {
+      color: #ef3f42;
+      background-color: #f9f7f7; }
+  .button.hidden {
+    display: none; }
+  .button:hover, .button:active, .button:focus {
+    color: white;
+    background-color: #f36e70;
+    border-color: #f36e70; }
 
 .animated-link {
   text-decoration: none;

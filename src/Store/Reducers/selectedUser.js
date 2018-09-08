@@ -24,7 +24,8 @@ function userInfo(state = {
 		catchPhrase: '',
 		bs: ''
 	},
-	userTodos: []
+	userTodos: [],
+	isUserTodosLoading: false
 }, action) {
 	switch (action.type) {
 		case REQUEST_USER_INFO: {
@@ -49,17 +50,17 @@ function userInfo(state = {
 }
 
 function userTodos(state = {
-	isLoading: false,
+	isUserTodosLoading: false,
 	userTodos: []
 }, action) {
 	switch (action.type) {
 		case REQUEST_USER_TODO: {
-			return { ...state, isLoading: true };
+			return { ...state, isUserTodosLoading: true };
 		}
 		case RECEIVE_USER_TODO: {
 			return {
 				...state,
-				isLoading: false,
+				isUserTodosLoading: false,
 				userTodos: action.payload.userTodos
 			};
 		}

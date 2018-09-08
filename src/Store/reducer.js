@@ -7,6 +7,8 @@ export const initialState = {
 	allPosts: {
 		isLoading: false,
 		loadedAt: null,
+		page: 1,
+		maxPage: 1,
 		posts: [
 			{
 				userId: 0,
@@ -22,6 +24,7 @@ export const initialState = {
 		userId: 0,
 		postTitle: '',
 		postBody: '',
+		isPostCommentsLoading: false,
 		postComments: [
 			{
 				commentId: 0,
@@ -54,6 +57,7 @@ export const initialState = {
 			catchPhrase: '',
 			bs: ''
 		},
+		isUserTodosLoading: false,
 		userTodos: [
 			{
 				todoId: 0,
