@@ -1,4 +1,4 @@
-import { REQUEST_USER_INFO, RECEIVE_USER_INFO, REQUEST_USER_TODO, RECEIVE_USER_TODO } from '../Actions/actionTypes';
+import { REQUEST_USER_INFO, RECEIVE_USER_INFO, REQUEST_USER_TODO, RECEIVE_USER_TODO, UPDATE_USER_TODO } from '../Actions/actionTypes';
 import { initialState } from '../reducer';
 
 function userInfo(state = {
@@ -63,6 +63,17 @@ function userTodos(state = {
 				userTodos: action.payload.userTodos
 			};
 		}
+		case UPDATE_USER_TODO: {
+			return {
+				...state,
+				userTodos: state.userTodos.map(todo => {
+					if (todo.todoId === action.payload) {
+						todo.todoStatus = !todo.todoStatus;
+					}
+					return todo;
+				})
+			}
+		}
 		default: {
 			return state;
 		}
@@ -76,6 +87,7 @@ export default function selectedUser(state = initialState.selectedUser, action) 
 			return userInfo(state, action);
 		case REQUEST_USER_TODO:
 		case RECEIVE_USER_TODO:
+		case UPDATE_USER_TODO:
 			return userTodos(state, action);
 		default: return state;
 	}

@@ -1,0 +1,39 @@
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import PageIntro from '../../Components/PageIntro/PageIntro';
+import ToDoList from '../../Components/ToDoList/ToDoList';
+
+import { getUser, updateUserTodo } from '../../Store/Actions/actionTypes';
+
+class UserTodos extends Component {
+	
+	componentWillMount() {
+		const post_id = parseInt(this.props.match.params.id, 10);
+		this.props.getUser(post_id);
+	}
+
+	render() {
+		return(
+			<div>
+				<PageIntro title={this.props.selectedUser.userName} />
+				<div className='wrapper'>
+					<ToDoList 
+						list={this.props.selectedUser.userTodos}
+						updateUserTodo={this.props.updateUserTodo}
+					/>
+				</div>
+			</div>
+		);
+	}
+}
+
+const mapActionsToProps = (dispatch) => {
+	return {
+		getUser: bindActionCreators(getUser, dispatch),
+		updateUserTodo: bindActionCreators(updateUserTodo, dispatch),
+	}
+}
+
+export default connect(state => state, mapActionsToProps)(UserTodos);

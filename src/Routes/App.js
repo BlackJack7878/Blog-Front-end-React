@@ -6,6 +6,7 @@ import Home from './Home/Home';
 import About from './About/About';
 import PostSingle from './PostSingle/PostSingle';
 import UserSingle from './UserSingle/UserSingle';
+import UserTodos from './UserTodos/UserTodos';
 
 import './App.css';
 
@@ -21,6 +22,7 @@ class App extends Component {
             <Route path='/' component={Home} exact />
             <Route path='/about' component={About} />
             <Route path='/post/:id' component={PostSingle} />
+            <Route path='/user/:id/todos' component={UserTodos} />
             <Route path='/user/:id' component={UserSingle} />
           </Switch>
         </BrowserRouter>

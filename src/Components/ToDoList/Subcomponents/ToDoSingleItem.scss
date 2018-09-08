@@ -1,0 +1,64 @@
+@import '../../../Assets/Styles/variables.scss';
+
+.todo-list-item {
+  padding: 10px 0;
+  position: relative;
+
+  label {
+   padding-left: 40px;
+   position: relative;
+   z-index: 3;
+   user-select: none;
+   cursor: pointer;
+ }
+
+ input {
+   position: absolute;
+   top: 50%;
+   left: 0px;
+   transform: translateY(-50%);
+   margin: 0 10px 0 0;
+   opacity: 0;
+ }
+
+ .checkmark {
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    transform: translateY(-50%);
+    margin: 0 10px 0 0;
+    height: 20px;
+    width: 20px;
+    background-color: $secondary_color;
+    z-index: 1;
+    border: 2px solid $primary_color;
+    cursor: pointer;
+
+    &:after {
+      content: "";
+      position: absolute;
+      display: none;
+      left: 50%;
+      top: 50%;
+      margin-top: -8px;
+      margin-left: -4px;
+      width: 5px;
+      height: 10px;
+      border: solid black;
+      border-width: 0 3px 3px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+  }
+
+  input:checked ~ .checkmark {
+    background-color: $secondary_color;
+    border: 2px solid $primary_color;
+  }
+
+  input:checked ~ .checkmark:after {
+    display: block;
+  }
+
+}

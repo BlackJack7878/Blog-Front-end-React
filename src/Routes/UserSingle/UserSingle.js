@@ -1,19 +1,28 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Link } from 'react-router-dom';
 
 import PageIntro from '../../Components/PageIntro/PageIntro';
 import UserMap from './Components/UserMap/UserMap';
+import ToDoList from '../../Components/ToDoList/ToDoList';
 
 import './UserSingle.css';
 
-import { getUser } from '../../Store/Actions/actionTypes';
+import { getUser, updateUserTodo } from '../../Store/Actions/actionTypes';
 
 class UserSingle extends Component {
 
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			user_id: parseInt(this.props.match.params.id, 10)
+		};
+	}
+
 	componentWillMount() {
-		const user_id = parseInt(this.props.match.params.id, 10);
-		this.props.getUser(user_id);
+		this.props.getUser(this.state.user_id);
 	}
 
 	render() {
@@ -60,8 +69,13 @@ class UserSingle extends Component {
 						lng={this.props.selectedUser.userAddress.geo.lng}
 						title={`${this.props.selectedUser.userName} map`}
 					/>
-					
+
 					<h3>User's To Do List:</h3>
+					<ToDoList 
+						list={this.props.selectedUser.userTodos.slice(0, 5)} 
+						updateUserTodo={this.props.updateUserTodo}
+					/>
+					<Link to={`/user/${this.state.user_id}/todos`}>View All User's Todos</Link>
 				</div>
 			</div>
 		);
@@ -70,6 +84,7 @@ class UserSingle extends Component {
 
 const mapActionsToProps = (dispatch) => {
 	return {
+		updateUserTodo: bindActionCreators(updateUserTodo, dispatch),
 		getUser: bindActionCreators(getUser, dispatch)
 	}
 }

@@ -34,6 +34,14 @@ export const getUserTodo = (userId = 0) => dispatch => {
 
 }
 
+export const UPDATE_USER_TODO = 'UPDATE_TODO';
+export function updateUserTodo(id) {
+	return {
+		type: UPDATE_USER_TODO,
+		payload: id
+	}
+}
+
 // ----------------------------------------------
 // USER
 // ----------------------------------------------
