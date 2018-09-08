@@ -27,6 +27,6 @@ export default function allPosts(state = initialState.allPosts, action) {
 		case REQUEST_POSTS:
 		case RECEIVE_POSTS:
 			return posts(state, action);
-		default: { return state };
+		default: return state;
 	}
 }

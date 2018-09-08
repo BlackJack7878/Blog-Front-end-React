@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import PageIntro from '../../Components/PageIntro/PageIntro';
 import Comment from './Components/Comment/Comment';
 
 import './PostSingle.css';
 
-import { store } from '../../Store/store';
 import { getPostInfo } from '../../Store/Actions/actionTypes';
 
 class PostSingle extends Component {
 
 	componentWillMount() {
-		const post_id = parseInt(this.props.match.params.id);
-		store.dispatch(getPostInfo(post_id));
+		const post_id = parseInt(this.props.match.params.id, 10);
+		this.props.getPostInfo(post_id);
 	}
 
 	render() {
@@ -28,7 +28,7 @@ class PostSingle extends Component {
 		});	
 
 		return (
-			<div>
+			<div class='post-single'>
 				<PageIntro title={this.props.selectedPost.postTitle} />
 				<div className='wrapper'>
 					<p>{this.props.selectedPost.postBody}</p>
@@ -42,4 +42,10 @@ class PostSingle extends Component {
 	}
 }
 
-export default connect(state => state)(PostSingle);
+const mapActionsToProps = (dispatch) => {
+	return {
+		getPostInfo: bindActionCreators(getPostInfo, dispatch)
+	}
+}
+
+export default connect(state => state, mapActionsToProps)(PostSingle);

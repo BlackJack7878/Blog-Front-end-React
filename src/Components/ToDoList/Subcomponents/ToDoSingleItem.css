@@ -1,0 +1,48 @@
+.todo-list-item {
+  padding: 10px 0;
+  position: relative; }
+  .todo-list-item label {
+    padding-left: 40px;
+    position: relative;
+    z-index: 3;
+    user-select: none;
+    cursor: pointer; }
+  .todo-list-item input {
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    transform: translateY(-50%);
+    margin: 0 10px 0 0;
+    opacity: 0; }
+  .todo-list-item .checkmark {
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    transform: translateY(-50%);
+    margin: 0 10px 0 0;
+    height: 20px;
+    width: 20px;
+    background-color: #f9f7f7;
+    z-index: 1;
+    border: 2px solid #ef3f42;
+    cursor: pointer; }
+    .todo-list-item .checkmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+      left: 50%;
+      top: 50%;
+      margin-top: -8px;
+      margin-left: -4px;
+      width: 5px;
+      height: 10px;
+      border: solid black;
+      border-width: 0 3px 3px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg); }
+  .todo-list-item input:checked ~ .checkmark {
+    background-color: #f9f7f7;
+    border: 2px solid #ef3f42; }
+  .todo-list-item input:checked ~ .checkmark:after {
+    display: block; }

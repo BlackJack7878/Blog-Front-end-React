@@ -1,7 +1,96 @@
 // ----------------------------------------------
+// USER - TO DO
+// ----------------------------------------------
+export const REQUEST_USER_TODO = 'REQUEST_USER_TODO';
+export function requestUserTodo() {
+	return {
+		type: REQUEST_USER_TODO
+	}
+}
+
+export const RECEIVE_USER_TODO = 'RECEIVE_USER_TODO';
+export function receiveUserTodo(json) {
+	return {
+		type: RECEIVE_USER_TODO,
+		payload: {
+			userTodos: json.map(item => {
+				return {
+					todoId: item.id,
+					todoTitle: item.title,
+					todoStatus: item.completed
+				}
+			})
+		}
+	}
+}
+
+export const getUserTodo = (userId = 0) => dispatch => {
+
+	dispatch(requestUserTodo());
+
+	return fetch('https://jsonplaceholder.typicode.com/todos?userId=' + userId)
+		.then(response => response.json())
+		.then(json => dispatch(receiveUserTodo(json)));
+
+}
+
+export const UPDATE_USER_TODO = 'UPDATE_TODO';
+export function updateUserTodo(id) {
+	return {
+		type: UPDATE_USER_TODO,
+		payload: id
+	}
+}
+
+// ----------------------------------------------
+// USER
+// ----------------------------------------------
+export const REQUEST_USER_INFO = 'REQUEST_USER_INFO';
+export function requestUserInfo() {
+	return {
+		type: REQUEST_USER_INFO
+	}
+}
+
+export const RECEIVE_USER_INFO = 'RECEIVE_USER_INFO';
+export function receiveUserInfo(json) {
+	return {
+		type: RECEIVE_USER_INFO,
+		payload: {
+			userId: json.id,
+			userName: json.name,
+			userNickname: json.username,
+			userEmail: json.email,
+			userPhone: json.phone,
+			userWebsite: json.website,
+			userAddress: json.address,
+			userCompany: json.company
+		}
+	}
+}
+
+export const getUserInfo = (userId = 0) => dispatch => {
+
+	dispatch(requestUserInfo());
+
+	return fetch('https://jsonplaceholder.typicode.com/users/' + userId)
+		.then(response => response.json())
+		.then(json => dispatch(receiveUserInfo(json)));
+
+}
+
+// Combine getUserTodo & getUserInfo
+export const getUser = (userId = 0) => (dispatch, getState) => {
+
+	return dispatch(getUserInfo(userId)).then(() => {
+		return dispatch(getUserTodo(userId));
+	});
+	
+}
+
+// ----------------------------------------------
 // POST - COMMENTS
 // ----------------------------------------------
-
 export const REQUEST_POST_COMMENTS = 'REQUEST_POST_COMMENTS';
 export function requestPostComments() {
 	return {
@@ -27,7 +116,7 @@ export function receivePostComments(json) {
 }
 
 // ASYNC COMMENTS REQUEST
-export const getPostComments = (postId) => dispatch => {
+export const getPostComments = (postId = 0) => dispatch => {
 
 	dispatch(requestPostComments());
 
@@ -69,13 +158,11 @@ export const getPostSingle = (postId = 0) => dispatch => {
 		.then(response => response.json())
 		.then(json => dispatch(receivePostSingle(json)));
 
-	console.log('PIZDA');
-
 }
 
 
 // Combine getPostSingle & getPostComments
-export const getPostInfo = (postId) => (dispatch, getState) => {
+export const getPostInfo = (postId = 0) => (dispatch, getState) => {
 
 	return dispatch(getPostSingle(postId)).then(() => {
 		return dispatch(getPostComments(postId));

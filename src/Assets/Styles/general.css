@@ -10,6 +10,15 @@ body {
   margin: auto;
   padding: 80px 0px; }
 
+a {
+  color: #ef3f42;
+  text-decoration: none; }
+  a:hover, a:focus, a:active {
+    color: #f36e70; }
+
+p {
+  line-height: 1.6; }
+
 .animated-link {
   text-decoration: none;
   color: #ef3f42;

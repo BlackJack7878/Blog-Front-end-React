@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import PageIntro from '../../Components/PageIntro/PageIntro';
 import Post from './Components/Post/Post';
 import './Home.css';
 
-import { store } from '../../Store/store';
 import { getPosts } from '../../Store/Actions/actionTypes';
 
 class Home extends Component {
 	
 	componentWillMount() {
-		store.dispatch(getPosts());
+		this.props.getPosts();
 	}
 
 	render() {
@@ -36,4 +36,10 @@ class Home extends Component {
 	}
 }
 
-export default connect(state => state)(Home);
+const mapActionsToProps = (dispatch) => {
+	return {
+		getPosts: bindActionCreators(getPosts, dispatch)
+	}
+}
+
+export default connect(state => state, mapActionsToProps)(Home);
