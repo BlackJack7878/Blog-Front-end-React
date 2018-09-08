@@ -6,20 +6,20 @@ import './Pager.css';
 class Pager extends Component {
 	render() {
 		const class_hidden_prev = (this.props.prevPage === 0) ? 'hidden' : '';
-		const class_hidden_next = (this.props.nextPage === this.props.maxPage) ? 'hidden' : '';
+		const class_hidden_next = (this.props.nextPage === this.props.maxPage + 1) ? 'hidden' : '';
 
 		return (
 			<div className='pager'>
 				<Link 
 					onClick={() => this.props.changePage()} 
-					to={`/${this.props.prevPage}`} 
+					to={this.props.prevLink} 
 					className={`button ${class_hidden_prev}`}
 				>
 					Back
 				</Link>
 				<Link 
 					onClick={() => this.props.changePage()} 
-					to={`/${this.props.prevPage}`} 
+					to={this.props.prevLink} 
 					className={`button ${class_hidden_prev}`}
 				>
 					{this.props.prevPage}
@@ -33,14 +33,14 @@ class Pager extends Component {
 				</Link>
 				<Link 
 					onClick={() => this.props.changePage()} 
-					to={`/${this.props.nextPage}`} 
+					to={this.props.nextLink} 
 					className={`button ${class_hidden_next}`}
 				>
 					{this.props.nextPage}
 				</Link>
 				<Link 
 					onClick={() => this.props.changePage()} 
-					to={`/${this.props.nextPage}`} 
+					to={this.props.nextLink} 
 					className={`button ${class_hidden_next}`}
 				>
 					Next

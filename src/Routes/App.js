@@ -25,6 +25,7 @@ class App extends Component {
               <Route path='/about' component={About} />
               <Route path='/post/:id' component={PostSingle} />
               <Route path='/user/:id/todos' component={UserTodos} />
+              <Route path='/user/:id/posts/:page?' component={Home} />
               <Route path='/user/:id' component={UserSingle} />
             </Switch>
           </ScrollToTop>

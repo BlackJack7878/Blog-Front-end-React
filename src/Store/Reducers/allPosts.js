@@ -18,7 +18,11 @@ function posts(state = {
 				isLoading: false,
 				maxPage: action.payload.posts.length / 5,
 				posts: action.payload.posts.map((item, index) => {
-					if (index >= state.page * 5 && index < (state.page * 5 + 5)) {
+					let firstPageOffset = 1;
+					if (state.page === 1) {
+						firstPageOffset = 2;
+					}
+					if (index + 1 > (state.page - firstPageOffset) * 5 && index + 1 <= (state.page * 5)) {
 						return item;
 					}
 					else {

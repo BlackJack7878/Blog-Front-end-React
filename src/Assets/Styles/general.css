@@ -19,6 +19,10 @@ a {
 p {
   line-height: 1.6; }
 
+.page-link {
+  margin-bottom: 10px;
+  display: inline-block; }
+
 .button {
   font-size: 14px;
   line-height: 1.3;

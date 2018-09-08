@@ -41,6 +41,8 @@ class UserSingle extends Component {
 						<h2>{this.props.selectedUser.userName}</h2>
 						<h4>{this.props.selectedUser.userNickname}</h4>
 
+						<Link className='page-link' to={`/user/${this.state.user_id}/posts`}>View All User's Posts</Link>
+
 						<h3>Contact Info:</h3>
 						<p>
 							Phone: <a href={`tel:${this.props.selectedUser.userPhone}`}>{this.props.selectedUser.userPhone}</a>
@@ -80,7 +82,8 @@ class UserSingle extends Component {
 						list={this.props.selectedUser.userTodos.slice(0, 5)} 
 						updateUserTodo={this.props.updateUserTodo}
 					/>
-					<Link to={`/user/${this.state.user_id}/todos`}>View All User's Todos</Link>
+
+					<Link className='page-link' to={`/user/${this.state.user_id}/todos`}>View All User's Todos</Link>
 				</div>
 			</div>
 		);

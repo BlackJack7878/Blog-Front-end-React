@@ -17,18 +17,25 @@ class Home extends Component {
 		super(props);
 
 		let initialPage = parseInt(this.props.match.params.page, 10);
+		let initialUserId = parseInt(this.props.match.params.id, 10);
 
 		if (isNaN(initialPage)) {
 			initialPage = 1;
 		}
 
 		this.state = {
-			page: initialPage
+			page: initialPage,
+			userId: initialUserId
 		}
 	}
 	
 	componentWillMount() {
-		this.props.getPosts(this.state.page);
+		if (isNaN(this.state.userId)) {
+			this.props.getPosts(this.state.page);
+		}
+		else {
+			this.props.getPosts(this.state.page, this.state.userId);
+		}
 	}
 
 	changePage() {
@@ -54,18 +61,27 @@ class Home extends Component {
 
 		const prevPage = this.state.page - 1;
 		const nextPage = this.state.page + 1;
+		let prevLink = '/' + prevPage;
+		let nextLink = '/' + nextPage;
+
+		if (!isNaN(this.state.userId)) {
+			prevLink = '/user/' + this.state.userId + '/posts/' + prevPage;
+			nextLink = '/user/' + this.state.userId + '/posts/' + nextPage;
+		}
 
 		return(
 			<div>
 				<Loader is_loading={is_loading} />
 
-				<PageIntro title='Home' />
+				<PageIntro title='Posts' />
 				
 				<div className='wrapper'>{posts}</div>
 
 				<Pager 
-					prevPage={prevPage}
-					nextPage={nextPage}
+					prevPage={prevPage} 
+					nextPage={nextPage} 
+					prevLink={prevLink}
+					nextLink={nextLink}
 					maxPage={this.props.allPosts.maxPage}
 				/>
 			</div>

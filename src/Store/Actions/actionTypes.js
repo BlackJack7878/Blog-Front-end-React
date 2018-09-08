@@ -205,7 +205,9 @@ export const getPosts = (page = 1, userId = null) => dispatch => {
 
 	dispatch(requestPosts(page));
 
-	return fetch('https://jsonplaceholder.typicode.com/posts/')
+	const url_user = (userId === null) ? '' : '?userId=' + userId;
+
+	return fetch('https://jsonplaceholder.typicode.com/posts' + url_user)
 		.then(response => response.json())
 		.then(json => dispatch(receivePosts(json)));
 
