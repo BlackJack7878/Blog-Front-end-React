@@ -8,3 +8,9 @@
     padding-left: 30px;
     margin-bottom: 40px;
     margin-top: 30px; }
+
+@media screen and (max-width: 430px) {
+  .comment {
+    padding: 15px 20px 20px 20px; }
+    .comment p {
+      padding-left: 20px; } }

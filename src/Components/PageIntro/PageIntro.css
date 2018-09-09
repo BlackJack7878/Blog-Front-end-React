@@ -9,3 +9,7 @@
     text-align: center;
     padding: 0px 20px;
     color: #ef3f42; }
+
+@media screen and (max-width: 430px) {
+  .intro-wrapper {
+    padding: 40px 20px; } }
